@@ -6,4 +6,4 @@ def test_get_prices():
     df = get_prices(xml_file)
 
     assert all(is_valid_drugbank_id(id) for id in df["DrugBank ID"])
-    # TODO check if avg price is a valid float
+    assert all(price >= 0 for price in df["Average Price"])
